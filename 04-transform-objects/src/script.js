@@ -20,6 +20,10 @@ mesh.position.set(0.8, -0.6, 1)
 // Scale
 mesh.scale.set(2, 0.5, 0.5)
 
+// Rotation
+mesh.rotation.y = Math.PI * 0.25
+mesh.rotation.x = Math.PI * 0.25
+
 /**
  * Sizes
  */
