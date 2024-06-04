@@ -8,14 +8,14 @@ const scene = new THREE.Scene()
 
 // Object
 const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+const material = new THREE.MeshBasicMaterial({color: 0xff0000})
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
 // Sizes
 const sizes = {
-    width: 800,
-    height: 600
+  width: 800,
+  height: 600
 }
 
 // Camera
@@ -25,7 +25,25 @@ scene.add(camera)
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+  canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
-renderer.render(scene, camera)
+
+// Clock
+const clock = new THREE.Clock()
+
+// Animations
+function tick() {
+  const elapsedTime = clock.getElapsedTime()
+
+  // Update objects
+  mesh.position.y = Math.sin(elapsedTime);
+  mesh.position.x = Math.cos(elapsedTime);
+
+  // Render
+  renderer.render(scene, camera)
+
+  requestAnimationFrame(tick)
+}
+
+tick();
